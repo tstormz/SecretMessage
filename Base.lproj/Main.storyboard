@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SecretMessage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +22,77 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a secret message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpT-Re-4ZK">
+                                <rect key="frame" x="16" y="69" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Secret Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlX-Mz-2Ae">
+                                <rect key="frame" x="16" y="20" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="4dD-WV-3IJ">
+                                <rect key="frame" x="16" y="107" width="320" height="320"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4dD-WV-3IJ" secondAttribute="height" multiplier="1:1" id="kZ5-7x-6JZ"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TSr-5U-KMI" appends="YES" id="Hmu-BN-nSC"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vv8-rJ-X4y">
+                                <rect key="frame" x="16" y="447" width="343" height="60"/>
+                                <state key="normal" title="Encrypt"/>
+                                <connections>
+                                    <action selector="encrypt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="69U-ga-ysY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9e4-Zi-PRM">
+                                <rect key="frame" x="16" y="515" width="343" height="60"/>
+                                <state key="normal" title="Decrypt"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AlX-Mz-2Ae" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4c8-j7-gK2"/>
+                            <constraint firstItem="mpT-Re-4ZK" firstAttribute="top" secondItem="AlX-Mz-2Ae" secondAttribute="bottom" constant="8" id="51O-xL-zfj"/>
+                            <constraint firstItem="vv8-rJ-X4y" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="7dB-1b-F6w"/>
+                            <constraint firstItem="9e4-Zi-PRM" firstAttribute="top" secondItem="vv8-rJ-X4y" secondAttribute="bottom" constant="8" id="9We-Tz-hJW"/>
+                            <constraint firstItem="vv8-rJ-X4y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AI6-Zx-MGe"/>
+                            <constraint firstItem="AlX-Mz-2Ae" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="C2g-vi-EYY"/>
+                            <constraint firstItem="vv8-rJ-X4y" firstAttribute="top" secondItem="4dD-WV-3IJ" secondAttribute="bottom" constant="8" id="D7a-ft-4eW"/>
+                            <constraint firstItem="9e4-Zi-PRM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="JHe-NK-IWJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4dD-WV-3IJ" secondAttribute="trailing" id="Oc9-cz-MQk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9e4-Zi-PRM" secondAttribute="bottom" id="Rj8-9A-3Ce"/>
+                            <constraint firstItem="4dD-WV-3IJ" firstAttribute="top" secondItem="mpT-Re-4ZK" secondAttribute="bottom" constant="8" id="WRM-a4-hhA"/>
+                            <constraint firstItem="AlX-Mz-2Ae" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="a8A-ca-WAc"/>
+                            <constraint firstItem="9e4-Zi-PRM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="g8i-5V-Id8"/>
+                            <constraint firstItem="mpT-Re-4ZK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hf4-Ch-74V"/>
+                            <constraint firstItem="4dD-WV-3IJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tUB-MK-FdA"/>
+                            <constraint firstItem="mpT-Re-4ZK" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="utG-4o-IaE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="messageField" destination="mpT-Re-4ZK" id="rsS-Ur-iUf"/>
+                        <outlet property="photoImageView" destination="4dD-WV-3IJ" id="rDu-ju-S4N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TSr-5U-KMI">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="wem-K6-c0m"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="-98.400000000000006" y="122.78860569715144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="540" height="540"/>
+    </resources>
 </document>
