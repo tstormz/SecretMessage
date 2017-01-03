@@ -65,7 +65,36 @@ class ViewController: UIViewController, UITextFieldDelegate,
     }
     
     @IBAction func encrypt(_ sender: AnyObject) {
-        UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        let imgData: Data? = UIImageJPEGRepresentation(photoImageView.image!, 1.0)
+        guard let imgBytes = imgData else {
+            return
+        }
+        let nBytes = imgBytes.count
+        //let msg = messageField.text ?? ""
+        //let msgBytes = [UInt8](msg.utf8)
+        let newImgData = NSMutableData(capacity: nBytes)
+        if let theData = newImgData {
+            //let array: [UInt8] = [UInt8](imgBytes)
+            var iterator = imgBytes.makeIterator()
+            while var byte = iterator.next() {
+                let myData = NSData(bytes: &byte, length: 1)
+                theData.append(myData as Data)
+            }
+            //let data = NSData(bytes: array, length: array.count)
+            //theData.setData(data as Data)
+            let newImage = UIImage(data: theData as Data)
+            UIImageWriteToSavedPhotosAlbum(newImage!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+    }
+    
+    func createBitArray(from byte: UInt8) -> [Bool] {
+        let bitMask: UInt8 = 1
+        var bits = [Bool]()
+        for index: UInt8 in 0...7 {
+            let bit = (byte >> index) & bitMask == 1 ? true : false
+            bits.insert(bit, at: Int(index))
+        }
+        return bits
     }
     
     func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
